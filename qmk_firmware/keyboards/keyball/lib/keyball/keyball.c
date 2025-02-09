@@ -133,12 +133,15 @@ static void add_scroll_div(int8_t delta) {
 //////////////////////////////////////////////////////////////////////////////
 // Pointing device driver
 
-#if KEYBALL_MODEL == 46
 void keyboard_pre_init_kb(void) {
+#ifdef WATCHDOG_ENABLE
+    wdt_enable(WDTO_8S);
+#endif
+#if KEYBALL_MODEL == 46
     keyball.this_have_ball = pmw3360_init();
+#endif
     keyboard_pre_init_user();
 }
-#endif
 
 void pointing_device_driver_init(void) {
 #if KEYBALL_MODEL != 46
@@ -400,7 +403,7 @@ void keyball_oled_render_ballinfo(void) {
     //     Ball: -12  34   0   0
 
     // 1st line, "Ball" label, mouse x, y, h, and v.
-    oled_write_P(PSTR("Ball\xB1"), false);
+    oled_write_P(PSTR("BALL\xB1"), false);
     oled_write(format_4d(keyball.last_mouse.x), false);
     oled_write(format_4d(keyball.last_mouse.y), false);
     oled_write(format_4d(keyball.last_mouse.h), false);
@@ -779,3 +782,32 @@ uint8_t mod_config(uint8_t mod) {
 }
 
 #endif
+
+void matrix_init_kb(void)
+{
+    // put your keyboard start-up code here
+    // runs once when the firmware starts up
+    matrix_init_user();
+#ifdef WATCHDOG_ENABLE
+    // This is done after turning the layer LED red, if we're caught in a loop
+    // we should get a flashing red light
+    wdt_enable(WDTO_2S);
+#endif
+}
+
+void matrix_scan_kb(void)
+{
+#ifdef WATCHDOG_ENABLE
+    wdt_reset();
+#endif
+    matrix_scan_user();
+}
+
+void reset_keyboard_kb(void){
+#ifdef WATCHDOG_ENABLE
+    MCUSR = 0;
+    wdt_disable();
+    wdt_reset();
+#endif
+    reset_keyboard();
+}
