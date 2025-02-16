@@ -23,34 +23,34 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_universal(
-    KC_ESC   , KC_1     , KC_2     , KC_3     , KC_4     , KC_5     ,                                  KC_6     , KC_7     , KC_8     , KC_9     , KC_0     , KC_MINS  ,
-    KC_DEL   , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                                  KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     , KC_INT3  ,
-    KC_TAB   , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                  KC_H     , KC_J     , KC_K     , KC_L     , KC_SCLN  , S(KC_7)  ,
-    MO(1)    , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     , KC_RBRC  ,              KC_NUHS, KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_SLSH  , KC_RSFT  ,
-    _______  , KC_LCTL  , KC_LALT  , KC_LGUI,LT(1,KC_LNG2),LT(2,KC_SPC),LT(3,KC_LNG1),    KC_BSPC,LT(2,KC_ENT),LT(1,KC_LNG2),KC_RGUI, _______ , KC_RALT  , KC_PSCR
+    KC_F1    , KC_F2    , KC_F3    , KC_F4    , KC_F5    , KC_F6    ,                                  KC_F7    , KC_F8    , KC_F9    , KC_F10   , KC_F11   , KC_F12    ,
+    XXXXXXX  , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                                  KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     , KC_LEFT_BRACKET  ,
+    KC_TAB   , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                  KC_H     , KC_J     , KC_K     , KC_L     , KC_SEMICOLON , KC_QUOTE ,
+    KC_LCTL  , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     , MC_14,                    MC_15, KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_SLSH  , KC_RCTL  ,
+    KC_LGUI  , KC_LALT  , XXXXXXX  , MS_BTN2  , MS_BTN1  ,LT(2,KC_SPC),LSFT_T(KC_ENTER),RSFT_T(KC_ESC),LT(2,KC_BSPC), XXXXXXX  , XXXXXXX  , XXXXXXX  , KC_RALT  , KC_RGUI
   ),
 
   [1] = LAYOUT_universal(
-    S(KC_ESC), S(KC_1)  , KC_LBRC  , S(KC_3)  , S(KC_4)  , S(KC_5)  ,                                  KC_EQL   , S(KC_6)  ,S(KC_QUOT), S(KC_8)  , S(KC_9)  ,S(KC_INT1),
-    S(KC_DEL), S(KC_Q)  , S(KC_W)  , S(KC_E)  , S(KC_R)  , S(KC_T)  ,                                  S(KC_Y)  , S(KC_U)  , S(KC_I)  , S(KC_O)  , S(KC_P)  ,S(KC_INT3),
-    S(KC_TAB), S(KC_A)  , S(KC_S)  , S(KC_D)  , S(KC_F)  , S(KC_G)  ,                                  S(KC_H)  , S(KC_J)  , S(KC_K)  , S(KC_L)  , KC_QUOT  , S(KC_2)  ,
-    _______  , S(KC_Z)  , S(KC_X)  , S(KC_C)  , S(KC_V)  , S(KC_B)  ,S(KC_RBRC),           S(KC_NUHS), S(KC_N)  , S(KC_M)  ,S(KC_COMM), S(KC_DOT),S(KC_SLSH),S(KC_RSFT),
-    _______  ,S(KC_LCTL),S(KC_LALT),S(KC_LGUI), _______  , _______  , _______  ,            _______  , _______  , _______  ,S(KC_RGUI), _______  , S(KC_RALT), _______
+    _______  , KC_1     , KC_2     , KC_3     , KC_4     , KC_5     ,                                  KC_6     , KC_7     , KC_8     , KC_9     , KC_0     , KC_MINUS ,
+    KC_ESC   , _______  , _______  , _______  , _______  , _______  ,                                  _______  , _______  , _______  , _______  , _______  , _______  ,
+    KC_TAB   , _______  , _______  , _______  , _______  , _______  ,                                  _______  , _______  , _______  , _______  , _______  , _______  ,
+    KC_LSFT  , _______  , _______  , _______  , _______  , _______  , DF(0) ,                 DF(0)  , _______  , _______  , _______  , _______  , _______  , _______  ,
+    KC_LCTL  , KC_LALT  , KC_LGUI  , _______  , KC_SPC  , KC_SPC  , KC_1  ,                 _______  , _______  , _______  , _______  , _______  , _______  , _______
   ),
 
   [2] = LAYOUT_universal(
-    SSNP_FRE , KC_F1    , KC_F2    , KC_F3    , KC_F4    , KC_F5    ,                                  KC_F6    , KC_F7    , KC_F8    , KC_F9    , KC_F10   , KC_F11   ,
-    SSNP_VRT , _______  , KC_7     , KC_8     , KC_9     , _______  ,                                  _______  , KC_LEFT  , KC_UP    , KC_RGHT  , _______  , KC_F12   ,
-    SSNP_HOR , _______  , KC_4     , KC_5     , KC_6     ,S(KC_SCLN),                                  KC_PGUP  , KC_BTN1  , KC_DOWN  , KC_BTN2  , KC_BTN3  , _______  ,
-    _______  , _______  , KC_1     , KC_2     , KC_3     ,S(KC_MINS), S(KC_8)  ,            S(KC_9)  , KC_PGDN  , _______  , _______  , _______  , _______  , _______  ,
-    _______  , _______  , KC_0     , KC_DOT   , _______  , _______  , _______  ,             KC_DEL  , _______  , _______  , _______  , _______  , _______  , _______
+    MC_1     , MC_2     , MC_3     , MC_4     , MC_5     , MC_6     ,                                  MC_7     , MC_8     , MC_9     , MC_10    , MC_11    , MC_12   ,
+    _______  , KC_1     , KC_2     , KC_3     , KC_4     , KC_5     ,                                  KC_6     , KC_7     , KC_8     , KC_9     , KC_0     , KC_RIGHT_BRACKET ,
+    _______  , KC_GRAVE , KC_BACKSLASH , KC_EQUAL , KC_MINUS , _______ ,                  KC_PGUP  , KC_LEFT  , KC_UP    , KC_RIGHT , KC_HOME  , MC_0     ,
+    _______  , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  ,  DF(1)   ,             TO(3)   , KC_PGDN  , KC_BSPC  , KC_DOWN  , KC_DEL   , KC_END   , _______  ,
+    _______  , _______  , _______  , _______  , _______  , _______  , _______  ,             _______ , _______  , _______  , _______  , _______  , _______  , _______
   ),
 
   [3] = LAYOUT_universal(
-    RGB_TOG  , AML_TO   , AML_I50  , AML_D50  , _______  , _______  ,                                  RGB_M_P  , RGB_M_B  , RGB_M_R  , RGB_M_SW , RGB_M_SN , RGB_M_K  ,
-    RGB_MOD  , RGB_HUI  , RGB_SAI  , RGB_VAI  , _______  , _______  ,                                  RGB_M_X  , RGB_M_G  , RGB_M_T  , RGB_M_TW , _______  , _______  ,
-    RGB_RMOD , RGB_HUD  , RGB_SAD  , RGB_VAD  , _______  , _______  ,                                  CPI_D1K  , CPI_D100 , CPI_I100 , CPI_I1K  , KBC_SAVE , KBC_RST  ,
-    _______  , _______  , SCRL_DVD , SCRL_DVI , SCRL_MO  , SCRL_TO  , EE_CLR   ,            EE_CLR   , KC_HOME  , KC_PGDN  , KC_PGUP  , KC_END   , _______  , _______  ,
+    RGB_TOG  , AML_TO   , AML_I50  , AML_D50  , SSNP_FRE , EE_CLR  ,                                  RGB_M_P  , RGB_M_B  , RGB_M_R  , RGB_M_SW , RGB_M_SN , RGB_M_K  ,
+    RGB_MOD  , RGB_HUI  , RGB_SAI  , RGB_VAI  , SSNP_VRT , _______  ,                                  RGB_M_X  , RGB_M_G  , RGB_M_T  , RGB_M_TW , _______  , _______  ,
+    RGB_RMOD , RGB_HUD  , RGB_SAD  , RGB_VAD  , SSNP_HOR , _______  ,                                  CPI_D1K  , CPI_D100 , CPI_I100 , CPI_I1K  , KBC_SAVE , KBC_RST  ,
+    _______  , _______  , SCRL_DVD , SCRL_DVI , SCRL_MO  , SCRL_TO  , TO(0)   ,             TO(0)    , KC_HOME  , KC_PGDN  , KC_PGUP  , KC_END   , _______  , _______  ,
     QK_BOOT  , _______  , KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , _______  ,            _______  , KC_BSPC  , _______  , _______  , _______  , _______  , QK_BOOT
   ),
 };
@@ -67,8 +67,111 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 #    include "lib/oledkit/oledkit.h"
 
 void oledkit_render_info_user(void) {
-    keyball_oled_render_keyinfo();
-    keyball_oled_render_ballinfo();
-    keyball_oled_render_layerinfo();
+  keyball_oled_render_keyinfo();
+  keyball_oled_render_ballinfo();
+  keyball_oled_render_layerinfo();
 }
+
+
+void oledkit_render_logo_user(void) {
+  // https://javl.github.io/image2cpp/ vertical GFX
+  static const char PROGMEM raw_logo[] = {
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xc0, 0xe0, 0xe0, 0x30, 0x08, 0x02, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0xc0, 0x40, 0x20, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x04, 0x0c, 0x08, 0x18, 0x18, 0x30, 0xe0, 0xe0, 0xc0, 0xc0, 0xc0, 0x80, 0x80, 0x00, 0x80, 0xc0,
+    0xf0, 0xf8, 0x30, 0x80, 0xc0, 0xf0, 0xf0, 0xf0, 0xc0, 0x80, 0xc0, 0xe0, 0xf0, 0x30, 0xc0, 0xe0,
+    0xf8, 0xf8, 0x78, 0x20, 0x30, 0xf0, 0xf8, 0x78, 0x18, 0x00, 0x00, 0x80, 0x80, 0x80, 0x80, 0xc0,
+    0xc0, 0xc0, 0xc0, 0xe0, 0xf8, 0x7e, 0x7f, 0x67, 0x13, 0x38, 0x38, 0x30, 0x70, 0x70, 0xe0, 0xe0,
+    0xe0, 0xc0, 0xc0, 0xc0, 0xc0, 0x80, 0xc0, 0xf0, 0xf8, 0x3e, 0x8c, 0xc0, 0xc0, 0xc0, 0x40, 0x60,
+    0x60, 0xe0, 0xe0, 0xf0, 0xf0, 0x60, 0x00, 0x80, 0x80, 0xc0, 0xc0, 0xe0, 0x70, 0xf0, 0xf8, 0xfc,
+    0xfc, 0x78, 0x90, 0xc0, 0xe0, 0xf0, 0x78, 0x3c, 0x1e, 0x8f, 0x87, 0x81, 0x80, 0xc0, 0xc0, 0xc0,
+    0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0,
+    0x60, 0x60, 0x30, 0x30, 0x30, 0x18, 0x18, 0x0c, 0x0d, 0x07, 0x07, 0x13, 0x1f, 0x3f, 0x1f, 0x07,
+    0x03, 0x08, 0x0e, 0x07, 0x03, 0x01, 0x00, 0x03, 0x0f, 0x0f, 0x07, 0x39, 0x1e, 0x0f, 0x07, 0x01,
+    0x38, 0x38, 0x1c, 0x1c, 0x1e, 0x1f, 0x1f, 0x1e, 0x1f, 0x1f, 0x1f, 0x1b, 0x19, 0x19, 0x19, 0x19,
+    0x1f, 0x1f, 0x0f, 0x03, 0x00, 0x00, 0x08, 0x1c, 0x1c, 0x1c, 0x1e, 0x1e, 0x1e, 0x1f, 0x1f, 0x1f,
+    0x1b, 0x1b, 0x1b, 0x19, 0x1b, 0x1f, 0x1f, 0x1b, 0x10, 0x18, 0x1a, 0x1e, 0x1e, 0x1e, 0x1f, 0x1f,
+    0x1f, 0x0f, 0x0f, 0x0f, 0x0c, 0x8e, 0xcf, 0xef, 0xfb, 0x79, 0x3c, 0x1e, 0x0f, 0x17, 0x1b, 0x1d,
+    0x1e, 0x0f, 0x0f, 0x07, 0x03, 0x03, 0x1f, 0x1f, 0x01, 0x01, 0x03, 0x03, 0x03, 0x03, 0x83, 0x83,
+    0xc3, 0xc3, 0xe3, 0xe3, 0x73, 0x73, 0x33, 0x3b, 0x3b, 0x1f, 0x1f, 0x0f, 0x0f, 0x0f, 0x07, 0x07,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x1c, 0x0e, 0x07, 0x07, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x06, 0x07, 0x07, 0x06, 0x03, 0x03, 0x03, 0x01,
+    0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+  };
+  oled_write_raw_P(raw_logo, sizeof(raw_logo));
+
+  // static const char PROGMEM logo[][3][7] = {
+  //     {{0x97, 0x98, 0x99, 0x9A, 0}, {0x91, 0x92, 0x93, 0x94, 0x95, 0x96, 0}, {0x9B, 0x9C, 0x9D, 0x9E, 0x9F, 0}}, /* l      num      CB */
+  //     {{0xB7, 0xB8, 0xB9, 0xBA, 0}, {0xB1, 0xB2, 0xB3, 0xB4, 0xB5, 0xB6, 0}, {0xBB, 0xBC, 0xBD, 0xBE, 0xBF, 0}}, /* 1      num      CB */
+  //     {{0xD7, 0xD8, 0xD9, 0xDA, 0}, {0xD1, 0xD2, 0xD3, 0xD4, 0xD5, 0xD6, 0}, {0xDB, 0xDC, 0xDD, 0xDE, 0xDF, 0}}, /* 1      cap      CB */
+  //     {{0xF7, 0xF8, 0xF9, 0xFA, 0}, {0xF1, 0xF2, 0xF3, 0xF4, 0xF5, 0xF6, 0}, {0xFB, 0xFC, 0xFD, 0xFE, 0xFF, 0}}, /* l      cap      CB */
+  //     {{0xB7, 0xC0, 0xC1, 0xBA, 0}, {0xB7, 0xC2, 0xC3, 0xBA, 0},             {0xB7, 0xC4, 0xC5, 0xBA, 0}},       /* 2       3       4  */
+  //     {{0xD7, 0xE0, 0xE1, 0xDA, 0}, {0xD7, 0xE2, 0xE3, 0xDA, 0},             {0xD7, 0xE4, 0xE5, 0xDA, 0}},       /* 2       3       4  */
+  // };
+  // // clang-format on
+  // oled_set_cursor(0, 0);
+  // oled_write_P(logo[0][0], false);
+  // oled_set_cursor(0, 3);
+  // oled_write_P(logo[3][0], false);
+  // switch (get_highest_layer(layer_state)) {
+  //     case 0:
+  //         oled_set_cursor(0, 1);
+  //         oled_write_P(logo[1][0], false);
+  //         oled_set_cursor(0, 2);
+  //         oled_write_P(logo[2][0], false);
+  //         break;
+  //     case 1:
+  //         oled_set_cursor(0, 1);
+  //         oled_write_P(logo[4][0], false);
+  //         oled_set_cursor(0, 2);
+  //         oled_write_P(logo[5][0], false);
+  //         break;
+  //     case 2:
+  //         oled_set_cursor(0, 1);
+  //         oled_write_P(logo[4][1], false);
+  //         oled_set_cursor(0, 2);
+  //         oled_write_P(logo[5][1], false);
+  //         break;
+  //     case 3:
+  //         oled_set_cursor(0, 1);
+  //         oled_write_P(logo[4][2], false);
+  //         oled_set_cursor(0, 2);
+  //         oled_write_P(logo[5][2], false);
+  //         break;
+  //     default:
+  //         oled_set_cursor(0, 1);
+  //         oled_write_P(PSTR("    "), false);
+  //         oled_set_cursor(0, 2);
+  //         oled_write_P(PSTR("    "), false);
+  // }
+  // // oled_set_cursor(8, 0);
+  // // oled_write_P(led_state.num_lock ? logo[0][1] : PSTR("      "), false);
+  // // oled_set_cursor(8, 1);
+  // // oled_write_P(led_state.num_lock ? logo[1][1] : PSTR("      "), false);
+  // // oled_set_cursor(8, 2);
+  // // oled_write_P(led_state.caps_lock ? logo[2][1] : PSTR("      "), false);
+  // // oled_set_cursor(8, 3);
+  // // oled_write_P(led_state.caps_lock ? logo[3][1] : PSTR("      "), false);
+
+  // oled_set_cursor(16, 0);
+  // oled_write_P(logo[0][2], false);
+  // oled_set_cursor(16, 1);
+  // oled_write_P(logo[1][2], false);
+  // oled_set_cursor(16, 2);
+  // oled_write_P(logo[2][2], false);
+  // oled_set_cursor(16, 3);
+  // oled_write_P(logo[3][2], false);
+}
+
 #endif
