@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef RGBLIGHT_ENABLE
 // #    define RGBLIGHT_EFFECT_BREATHING
-#    define RGBLIGHT_EFFECT_RAINBOW_MOOD
+// #    define RGBLIGHT_EFFECT_RAINBOW_MOOD
 #    define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 // #    define RGBLIGHT_EFFECT_SNAKE
 // #    define RGBLIGHT_EFFECT_KNIGHT
@@ -33,10 +33,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #    define RGBLIGHT_EFFECT_TWINKLE
 
 // FIXME
-#   define RGBLIGHT_DEFAULT_MODE (RGBLIGHT_MODE_RAINBOW_SWIRL + 4)
+#   define RGBLIGHT_DEFAULT_MODE (RGBLIGHT_MODE_RAINBOW_SWIRL + 2)
 #endif
 
 #define TAP_CODE_DELAY 5
 
+#define NO_ACTION_ONESHOT
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
-#define AUTO_MOUSE_DEFAULT_LAYER 2
+#define AUTO_MOUSE_DEFAULT_LAYER 1
+#define PERMISSIVE_HOLD
+#define USB_POLLING_INTERVAL_MS 1

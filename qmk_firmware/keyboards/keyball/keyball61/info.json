@@ -9,6 +9,9 @@
     "rgblight": {
         "driver": "ws2812"
     },
+    "build": {
+      "debounce_type": "asym_eager_defer_pk"
+    },
     "layouts": {
       "LAYOUT_no_ball": {
         "layout": [

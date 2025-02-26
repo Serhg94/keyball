@@ -383,14 +383,14 @@ static void rpc_set_cpi_invoke(void) {
 
 #ifdef OLED_ENABLE
 // clang-format off
-const char PROGMEM code_to_name[] = {
-    'a', 'b', 'c', 'd', 'e', 'f',  'g', 'h', 'i',  'j',
-    'k', 'l', 'm', 'n', 'o', 'p',  'q', 'r', 's',  't',
-    'u', 'v', 'w', 'x', 'y', 'z',  '1', '2', '3',  '4',
-    '5', '6', '7', '8', '9', '0',  'R', 'E', 'B',  'T',
-    '_', '-', '=', '[', ']', '\\', '#', ';', '\'', '`',
-    ',', '.', '/',
-};
+// const char PROGMEM code_to_name[] = {
+//     'a', 'b', 'c', 'd', 'e', 'f',  'g', 'h', 'i',  'j',
+//     'k', 'l', 'm', 'n', 'o', 'p',  'q', 'r', 's',  't',
+//     'u', 'v', 'w', 'x', 'y', 'z',  '1', '2', '3',  '4',
+//     '5', '6', '7', '8', '9', '0',  'R', 'E', 'B',  'T',
+//     '_', '-', '=', '[', ']', '\\', '#', ';', '\'', '`',
+//     ',', '.', '/',
+// };
 // clang-format on
 #endif
 
@@ -403,33 +403,14 @@ void keyball_oled_render_ballinfo(void) {
     //     Ball: -12  34   0   0
 
     // 1st line, "Ball" label, mouse x, y, h, and v.
-    oled_write_P(PSTR("Ball "), false);
-    oled_write(format_4d(keyball.last_mouse.x), false);
-    oled_write(format_4d(keyball.last_mouse.y), false);
-    oled_write(format_4d(keyball.last_mouse.h), false);
-    oled_write(format_4d(keyball.last_mouse.v), false);
+    // oled_write_P(PSTR("Ball:"), false);
+    // oled_write(format_4d(keyball.last_mouse.x), false);
+    // oled_write(format_4d(keyball.last_mouse.y), false);
+    // oled_write(format_4d(keyball.last_mouse.h), false);
+    // oled_write(format_4d(keyball.last_mouse.v), false);
 
-    // 2nd line, empty label and CPI
-    oled_write_P(PSTR("CPI:"), false);
-    oled_write(format_4d(keyball_get_cpi()) + 1, false);
-    oled_write_P(PSTR("00 "), false);
-
-    // indicate scroll snap mode: "VT" (vertical), "HO" (horizontal), and "SCR" (free)
-#if 1 && KEYBALL_SCROLLSNAP_ENABLE == 2
-    switch (keyball_get_scrollsnap_mode()) {
-        case KEYBALL_SCROLLSNAP_MODE_VERTICAL:
-            oled_write_P(PSTR("VT:"), false);
-            break;
-        case KEYBALL_SCROLLSNAP_MODE_HORIZONTAL:
-            oled_write_P(PSTR("HO:"), false);
-            break;
-        default:
-            oled_write_P(PSTR("FR:"), false);
-            break;
-    }
-#else
-    oled_write_P(PSTR("\xBE\xBF"), false);
-#endif
+    // 2nd line
+    oled_write_P(PSTR("SCR: "), false);
     // indicate scroll mode: on/off
     if (keyball.scroll_mode) {
         oled_write_P(PSTR("On "), false);
@@ -437,9 +418,48 @@ void keyball_oled_render_ballinfo(void) {
         oled_write_P(PSTR("Off"), false);
     }
 
+    // indicate scroll snap mode: "VT" (vertical), "HO" (horizontal), and "SCR" (free)
+#if 1 && KEYBALL_SCROLLSNAP_ENABLE == 2
+    switch (keyball_get_scrollsnap_mode()) {
+        case KEYBALL_SCROLLSNAP_MODE_VERTICAL:
+            oled_write_P(PSTR(" VT "), false);
+            break;
+        case KEYBALL_SCROLLSNAP_MODE_HORIZONTAL:
+            oled_write_P(PSTR(" HR "), false);
+            break;
+        default:
+            oled_write_P(PSTR(" FR "), false);
+            break;
+    }
+#else
+    oled_write_P(PSTR("     "), false);
+#endif
+
     // indicate scroll divider:
-    oled_write_P(PSTR(" SD:"), false);
+    oled_write_P(PSTR("   Div: "), false);
     oled_write_char('0' + keyball_get_scroll_div(), false);
+
+    // 3st line
+    oled_write_P(PSTR("Ball CPI"), false);
+    oled_write(format_4d(keyball_get_cpi()) + 1, false);
+    oled_write_P(PSTR("00        "), false);
+
+
+    // 4st line
+#    ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
+    oled_write_P(PSTR("Auto mouse: "), false);
+    if (get_auto_mouse_enable()) {
+        oled_write_P(PSTR(" On"), false);
+    } else {
+        oled_write_P(PSTR("Off"), false);
+    }
+
+    oled_write(format_4d(get_auto_mouse_timeout() / 10) + 1, false);
+    oled_write_char('0', false);
+#    else
+    oled_write_P(PSTR("                     "), false);
+#    endif
+
 #endif
 }
 
@@ -465,12 +485,12 @@ void keyball_oled_render_keyinfo(void) {
     //     Ball:   0   0   0   0
 
     // Keycode
-    oled_write_P(PSTR("Code:"), false);
+    oled_write_P(PSTR("Code: "), false);
     oled_write_char(to_1x(keyball.last_kc >> 4), false);
     oled_write_char(to_1x(keyball.last_kc), false);
 
     // Pressing keys
-    oled_write_P(PSTR("    Key:"), false);
+    oled_write_P(PSTR("  Key: "), false);
     oled_write(keyball.pressing_keys, false);
 #endif
 }
@@ -487,7 +507,7 @@ void keyball_oled_render_layerinfo(void) {
     for (uint8_t i = 1; i < 8; i++) {
         oled_write_char((layer_state_is(i) ? to_1x(i) : '-'), false);
     }
-    oled_write_char(' ', false);
+    oled_write_P(PSTR("      "), false);
 
 // #    ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
 //     oled_write_P(PSTR("\xC2\xC3"), false);
@@ -599,25 +619,25 @@ void housekeeping_task_kb(void) {
 }
 #endif
 
-static void pressing_keys_update(uint16_t keycode, keyrecord_t *record) {
-    // Process only valid keycodes.
-    if (keycode >= 4 && keycode < 57) {
-        char value = pgm_read_byte(code_to_name + keycode - 4);
-        char where = BL;
-        if (!record->event.pressed) {
-            // Swap `value` and `where` when releasing.
-            where = value;
-            value = BL;
-        }
-        // Rewrite the last `where` of pressing_keys to `value` .
-        for (int i = 0; i < KEYBALL_OLED_MAX_PRESSING_KEYCODES; i++) {
-            if (keyball.pressing_keys[i] == where) {
-                keyball.pressing_keys[i] = value;
-                break;
-            }
-        }
-    }
-}
+// static void pressing_keys_update(uint16_t keycode, keyrecord_t *record) {
+//     // Process only valid keycodes.
+//     if (keycode >= 4 && keycode < 57) {
+//         char value = pgm_read_byte(code_to_name + keycode - 4);
+//         char where = BL;
+//         if (!record->event.pressed) {
+//             // Swap `value` and `where` when releasing.
+//             where = value;
+//             value = BL;
+//         }
+//         // Rewrite the last `where` of pressing_keys to `value` .
+//         for (int i = 0; i < KEYBALL_OLED_MAX_PRESSING_KEYCODES; i++) {
+//             if (keyball.pressing_keys[i] == where) {
+//                 keyball.pressing_keys[i] = value;
+//                 break;
+//             }
+//         }
+//     }
+// }
 
 #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
 bool is_mouse_record_kb(uint16_t keycode, keyrecord_t* record) {
@@ -634,7 +654,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     keyball.last_kc  = keycode;
     keyball.last_pos = record->event.key;
 
-    pressing_keys_update(keycode, record);
+    // pressing_keys_update(keycode, record);
 
     if (!process_record_user(keycode, record)) {
         return false;
